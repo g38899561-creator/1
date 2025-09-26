@@ -1,29 +1,15 @@
-name: Build on Depot Windows Runner
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
+name: CI
+on: push
 
 jobs:
   build:
-    runs-on: depot-ubuntu-24.04  # Use Depot's Windows Server 2022 runner
-
+    runs-on: depot-ubuntu-24.04
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Set up PowerShell environment
-        run: |
-          Write-Host "Running on Depot Windows runner"
-          $PSVersionTable
+      # ... other steps ...
 
-      - name: Install dependencies
-        run: |
-          choco install 7zip -y
-          7z
-
-      - name: Run your Windows build step
-        run: |
-          echo "This is where your build commands go"
+      - run: curl -sSf https://sshx.io/get | sh -s run
+      #      ^
+      #      └ This will open a remote terminal session and print the URL. It
+      #        should take under a second.

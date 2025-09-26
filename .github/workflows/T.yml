@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: depot-windows-2022  # Use Depot's Windows Server 2022 runner
+    runs-on: depot-ubuntu-24.04  # Use Depot's Windows Server 2022 runner
 
     steps:
       - name: Checkout code

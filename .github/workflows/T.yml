@@ -1,0 +1,29 @@
+name: Build on Depot Windows Runner
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: depot-windows-2022  # Use Depot's Windows Server 2022 runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PowerShell environment
+        run: |
+          Write-Host "Running on Depot Windows runner"
+          $PSVersionTable
+
+      - name: Install dependencies
+        run: |
+          choco install 7zip -y
+          7z
+
+      - name: Run your Windows build step
+        run: |
+          echo "This is where your build commands go"
